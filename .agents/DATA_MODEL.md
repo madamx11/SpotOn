@@ -95,7 +95,7 @@ Audit and resolution log for exercise merges and set edits.
 1. **NO HARD DELETES**: `MuscleGroup` and `Exercise` entities MUST NEVER be hard-deleted from the database. Deletion requests execute soft-archiving (`isArchived = true`). Historical sessions and sets remain attached to archived entities.
 2. **Canonical Unit Storage**: All weight values (`weightKg`) in `SetEntry` and `BodyWeightEntry` MUST be stored strictly in kilograms (`Double`). Unit conversion (`kg` to `lb`) is performed exclusively at the UI display layer (`weightKg * 2.20462`).
 3. **Session Uniqueness**: A `Session` represents a single exercise on a single date.
-4. **Warm-Up Set Exclusion**: Sets where `type == WARMUP` MUST be filtered out from all volume calculations, trend scores, PR detection, hard set counts, and progression logic.
+4. **Warm-Up Set Exclusion**: Sets where `type == WARMUP` MUST be filtered out from all hard-set counts, working-rep counts, trend scores, PR detection, and progression logic.
 
 ---
 

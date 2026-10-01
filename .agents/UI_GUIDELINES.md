@@ -47,7 +47,7 @@ Visual indicators MUST NEVER rely on color alone to communicate performance feed
 | **Increased Reps** | Green Up Arrow Icon `▲` | `+N reps @ X kg` | Double light tap |
 | **Decreased Reps** | Amber Down Arrow Icon `▼` | `-N reps @ X kg` | Single short pulse |
 | **Same Reps** | Gray Equals Icon `=` | `Same @ X kg` | Light click |
-| **New Rep PR** | Gold Star / Trophy Badge `★` | `PR! Best reps @ X kg` | Strong success vibration |
+| **New Rep PR** | Gold Star / PR Indicator `★` | `PR! Best reps @ X kg` | Strong success vibration |
 
 ---
 

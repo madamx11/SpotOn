@@ -30,7 +30,7 @@ Given in the PREVIOUS session, the user performed:
   | 3         | 80 kg  | 6    |
 When in the CURRENT session, the user performs Set 1 at 80 kg for 9 reps
 Then the feedback engine compares 80 kg against the FIRST set performed at 80 kg in the previous session (Set 2: 8 reps)
-And the UI displays a green badge "+1 rep @ 80.0 kg"
+And the UI displays a green indicator "+1 rep @ 80.0 kg"
 And does NOT compare against Set 1 (60 kg) or by set position index.
 ```
 
@@ -41,8 +41,8 @@ And does NOT compare against Set 1 (60 kg) or by set position index.
 ```gherkin
 Given a user logs 2 warm-up sets (60 kg x 10 reps, WARMUP) and 3 working sets (100 kg x 8 reps, NORMAL)
 When the user views the Exercise History Graph and Muscle Group Dashboard
-Then the total working volume counts ONLY the 3 working sets (2400 kg)
-And the warm-up sets are strictly excluded from volume, hard set counts, and trend scores.
+Then the total hard sets count ONLY the 3 working sets (24 working reps)
+And the warm-up sets are strictly excluded from hard set counts, working rep counts, and trend scores.
 ```
 
 ---
@@ -53,7 +53,7 @@ And the warm-up sets are strictly excluded from volume, hard set counts, and tre
 Given the user's historical best reps at 100.0 kg on "Squat" is 8 reps
 When the user logs a working set of "Squat" at 100.0 kg for 9 reps
 Then the system detects a new Rep PR
-And displays a "PR! Best reps at 100.0 kg" gold badge
+And displays a "PR! Best reps at 100.0 kg" PR indicator
 And triggers a distinct PR haptic vibration pattern.
 ```
 

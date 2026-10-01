@@ -24,13 +24,13 @@ No feature may be planned, designed, or built unless it is explicitly listed in 
 | Rep PR Detection | V2 | Not Started | Indicator for highest reps achieved at a given weight. |
 | Double-Progression Suggestions | V2 | Not Started | Weight increment prompts when top rep range is achieved on all working sets. |
 | Plateau Diagnosis | V2 | Not Started | Flagging exercises with no improvement across 4 consecutive sessions. |
-| Push/Pull Muscle Balance | V2 | Not Started | Comparative volume and hard set distribution analysis. |
+| Push/Pull Muscle Balance | V2 | Not Started | Comparative hard set and working rep distribution analysis. |
 | Session Tags | V2 | Not Started | Tagging sessions (e.g., fatigue, gym location). |
 | Back-Dating & Exercise Merging | V2 | Not Started | Logging historical sessions; merging duplicate exercises while preserving sets. |
 | Home-Screen Widget Quick-Log | V3 | Not Started | Glance widget for rapid logging from Android launcher. |
 | Multi-Gym Tags | V3 | Not Started | Location/equipment tagging across gym venues. |
 | Body Weight Tracking | V3 | Not Started | Daily body weight entries and timeline tracking. |
-| Weekly Recap | V3 | Not Started | Automated weekly volume and intensity summary report. |
+| Weekly Recap | V3 | Not Started | Automated weekly hard set, working rep, and intensity summary report. |
 | Consistency Heatmap | V3 | Not Started | Visual activity calendar grid. |
 | Auto-Backup & CSV Export/Import | V3 | Not Started | Storage Access Framework (SAF) local database backups and CSV data portability. |
 

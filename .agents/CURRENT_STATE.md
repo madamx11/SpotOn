@@ -17,6 +17,7 @@ Purpose: Dynamic tracking log of project implementation progress, active tasks, 
 - Root `AGENTS.md` directive created.
 - Updated documentation rules in `.agents/` per prompt directives (seed muscle groups, full v1 schema Part 1 initialization, gamification PR indicator wording, total working reps graph terminology, multi-gym tags in Part 6, precedence sentence, and Part 2 & Part 8 deliverables/exit criteria).
 - Added optional `gym` field (`gym nullable text`) to `Session` entity in V1 DB schema so Part 6 multi-gym tagging requires no database migration.
+- Executed documentation-only consistency audit: removed weight × reps volume references (standardizing on hard-set and working-rep counts), updated Push/Pull mapping to (Back, Biceps, Forearms), and standardized PR feedback terminology to PR indicator.
 
 ### In Progress
 - Initializing Part 1: Android project scaffolding, Hilt DI setup, Room database, DataStore, and Navigation Compose shell.

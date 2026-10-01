@@ -23,9 +23,9 @@ com.spoton.domain.engine/
 ├── RepPrEngine.kt               # Best reps achieved at target weight
 ├── DoubleProgressionEngine.kt   # Weight addition recommendation prompts
 ├── MuscleTrendEngine.kt         # Muscle group trend score calculation (% change vs baseline)
-├── HardSetVolumeEngine.kt       # Working volume & hard set counters (warm-ups excluded)
+├── HardSetVolumeEngine.kt       # Working rep & hard set counters (warm-ups excluded)
 ├── PlateauDiagnosticEngine.kt   # 4-session plateau detection
-├── PushPullBalanceEngine.kt     # Push vs Pull volume ratio evaluation
+├── PushPullBalanceEngine.kt     # Push vs Pull hard set / working rep ratio evaluation
 └── WeeklyRecapEngine.kt         # Aggregated weekly metrics builder
 ```
 
@@ -57,8 +57,8 @@ com.spoton.domain.engine/
 
 ### E. HardSetVolumeEngine
 - **Inputs**: List of `SetEntry` items for a target period (e.g., trailing 7 days).
-- **Rule**: Warm-up sets (`type == WARMUP`) are **STRICTLY EXCLUDED** from all volume and set totals. Hard sets count working sets (`NORMAL`, `DROP`, `FAILURE`) with RIR ≤ 3 or target reps met. Exercise performance graphs visualize top weight and total working reps over time (and best reps per weight), never weight x reps volume.
-- **Outputs**: `WorkingVolumeKg`, `HardSetCount`.
+- **Rule**: Warm-up sets (`type == WARMUP`) are **STRICTLY EXCLUDED** from all hard-set and working-rep totals. Hard sets count working sets (`NORMAL`, `DROP`, `FAILURE`) with RIR ≤ 3 or target reps met. Exercise performance graphs visualize top weight and total working reps over time (and best reps per weight), never weight x reps volume.
+- **Outputs**: `HardSetCount`, `WorkingRepCount`.
 
 ### F. PlateauDiagnosticEngine
 - **Inputs**: Last 4 completed `Session` entries and associated `SetEntry` data for an exercise.
@@ -66,8 +66,8 @@ com.spoton.domain.engine/
 - **Outputs**: `IsPlateaued: Boolean`, `PlateauSessionCount: Int`.
 
 ### G. PushPullBalanceEngine (V2)
-- **Inputs**: Completed sessions across Push muscle groups (Chest, Shoulders, Triceps) vs Pull muscle groups (Back, Biceps, Rear Delts).
-- **Outputs**: Ratio of hard sets (Push vs Pull) over rolling 7/14/30 day periods.
+- **Inputs**: Completed sessions across Push muscle groups (Chest, Shoulders, Triceps) vs Pull muscle groups (Back, Biceps, Forearms). (Legs and Abs are tracked separately).
+- **Outputs**: Ratio of hard sets and working reps (Push vs Pull) over rolling 7/14/30 day periods.
 
 ### H. WeeklyRecapEngine (V3)
 - **Inputs**: Completed sessions, sets, and body weight entries within a calendar week.

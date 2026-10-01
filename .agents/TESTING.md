@@ -29,9 +29,9 @@ No task is considered complete until all unit tests, DAO tests, ViewModel tests,
   - `RepPrEngineTest`: Validates PR flag emission only when reps exceed prior maximum at target weight (ignoring warm-ups).
   - `DoubleProgressionEngineTest`: Verifies weight addition prompts when 100% of working sets hit `targetRepMax`.
   - `MuscleTrendEngineTest`: Verifies trend score calculation (% change vs baseline average) across exercises without raw kg summation.
-  - `HardSetVolumeEngineTest`: Ensures warm-up sets (`WARMUP`) are strictly excluded from all volume/count calculations.
+  - `HardSetVolumeEngineTest`: Ensures warm-up sets (`WARMUP`) are strictly excluded from all hard-set and working-rep count calculations.
   - `PlateauDiagnosticEngineTest`: Verifies 4-session stagnation triggers plateau flag.
-  - `PushPullBalanceEngineTest`: Validates push vs pull volume ratio computations.
+  - `PushPullBalanceEngineTest`: Validates push vs pull hard-set and working-rep ratio computations.
   - `WeeklyRecapEngineTest`: Validates weekly summary aggregation.
 
 ### B. DAO & Room Database Tests

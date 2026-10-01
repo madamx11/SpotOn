@@ -2,6 +2,8 @@ Purpose: The ordered 10-part build plan detailing goals, deliverables, exit crit
 
 # Development Roadmap & Order
 
+Build order in DEVELOPMENT_ORDER.md always takes precedence over the version labels (V1/V2/V3), which only indicate product priority.
+
 Progress through these parts sequentially. **STRICT RULE**: Never start a part before all exit criteria of the preceding part are fully met and verified by automated tests and manual emulator testing.
 
 ---
@@ -10,8 +12,8 @@ Progress through these parts sequentially. **STRICT RULE**: Never start a part b
 - **Goals**: Initialize Android project, Hilt dependency injection, Room database, DataStore, and Navigation Compose shell.
 - **Deliverables**:
   - `SpotOnApplication` with `@HiltAndroidApp`.
-  - Room DB with initial entities (`MuscleGroup`, `Exercise`, `Session`, `SetEntry`).
-  - Pre-seeded standard muscle groups (Chest, Back, Quads, Hamstrings, Shoulders, Biceps, Triceps, Calves, Abs).
+  - Room DB with the full v1 schema: MuscleGroup, Exercise, Session (id, exerciseId, date, tags, note, gym nullable text, isCompleted), SetEntry (id, sessionId, setIndex, weightKg, reps, type [normal|warmup|drop|failure], rir nullable, createdAt), and ChangeHistory. BodyWeightEntry may be added in Part 7 via migration.
+  - Pre-seeded standard muscle groups (Chest, Back, Shoulders, Biceps, Triceps, Forearms, Legs, Abs).
   - DataStore settings repository.
   - Bottom navigation / Navigation Host shell.
 - **Exit Criteria**: App builds cleanly, Room database initializes with seed data, navigation shell renders dark theme UI without errors.
@@ -24,9 +26,10 @@ Progress through these parts sequentially. **STRICT RULE**: Never start a part b
   - Muscle Group list & detail screen.
   - Exercise list screen per muscle group.
   - Create / Edit exercise screen (equipment type, target rep range, notes).
+  - Create and rename custom muscle groups.
   - Custom sort ordering mechanism.
   - Soft-archiving logic for muscle groups and exercises.
-- **Exit Criteria**: User can add, edit, reorder, and archive exercises. Soft-archived items vanish from active lists but persist in DB.
+- **Exit Criteria**: User can create, rename, add, edit, reorder, and archive muscle groups and exercises. Soft-archived items vanish from active lists but persist in DB.
 
 ---
 
@@ -52,9 +55,9 @@ Progress through these parts sequentially. **STRICT RULE**: Never start a part b
   - `RepPrEngine` implementation.
   - `DoubleProgressionEngine` implementation.
   - Session completion summary screen.
-  - Rep PR notification badge on set logging.
+  - Rep PR indicator on the set row.
   - Double-progression suggestion prompt when top rep target is hit on all working sets.
-- **Exit Criteria**: Rep PRs trigger badges accurately; double-progression prompts display reliably when criteria are met.
+- **Exit Criteria**: Rep PRs display indicators accurately; double-progression prompts display reliably when criteria are met.
 
 ---
 
@@ -62,7 +65,7 @@ Progress through these parts sequentially. **STRICT RULE**: Never start a part b
 - **Goals**: Build progress visualizers and high-level muscle group analytics.
 - **Deliverables**:
   - `MuscleTrendEngine` and `HardSetVolumeEngine` implementations.
-  - Exercise history graph (top weight & volume over time).
+  - Exercise history graph (top weight & total working reps over time, and best reps per weight, never weight x reps volume).
   - Muscle Group Dashboard (trend score % vs baseline, hard set counts per week, days since last trained).
 - **Exit Criteria**: Graphs render accurately offline; trend score correctly computes average % change per exercise without raw kg summation.
 
@@ -77,6 +80,7 @@ Progress through these parts sequentially. **STRICT RULE**: Never start a part b
   - Set types: Normal, Warmup, Drop, Failure.
   - RIR (Reps in Reserve) optional logging.
   - Session tags and session-level notes.
+  - Multi-gym tag: an optional gym/location field on sessions, selectable and filterable.
 - **Exit Criteria**: Back-dated sets update historical metrics correctly; exercise merge preserves all set history without orphaned records.
 
 ---
@@ -99,7 +103,7 @@ Progress through these parts sequentially. **STRICT RULE**: Never start a part b
   - Jetpack Glance Home-Screen Widget.
   - Widget repository interface & background updater.
   - Quick-log dialog/activity trigger from widget button.
-- **Exit Criteria**: Tapping widget logs set immediately and syncs with main app database state.
+- **Exit Criteria**: The user taps the widget, enters reps in a quick-log dialog without opening the main app, and the set is saved and visible in the main app.
 
 ---
 

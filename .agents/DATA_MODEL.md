@@ -2,14 +2,14 @@ Purpose: Formal database schema, entity definitions, constraints, indices, relat
 
 # SpotOn Data Model
 
-All persistent application data is stored locally in Room (SQLite).
+All persistent application data is stored locally in Room (SQLite). All v1 schema tables (`muscle_groups`, `exercises`, `sessions`, `set_entries`, `change_history`) exist from Part 1 so all columns needed by later parts exist from Part 1 to avoid unnecessary migrations. `body_weight_entries` may be added in Part 7 via migration.
 
 ---
 
 ## 1. Schema Entities
 
 ### A. MuscleGroup Table (`muscle_groups`)
-Represents an anatomical target area (e.g., Chest, Back, Quads).
+Represents an anatomical target area. Pre-seeded standard muscle groups: Chest, Back, Shoulders, Biceps, Triceps, Forearms, Legs, Abs.
 
 | Field | Type | Nullable | Constraints / Default | Description |
 |---|---|---|---|---|
@@ -35,7 +35,7 @@ Represents a specific movement bound to a single `MuscleGroup`.
 | `isArchived` | `Boolean` | No | Default `false` | Soft-deletion flag. |
 
 ### C. Session Table (`sessions`)
-Represents a workout instance for ONE exercise on ONE calendar date.
+Represents a workout instance for ONE exercise on ONE calendar date. Entity schema: `Session (id, exerciseId, date, tags, note, gym nullable text, isCompleted)`.
 
 | Field | Type | Nullable | Constraints / Default | Description |
 |---|---|---|---|---|
@@ -44,6 +44,7 @@ Represents a workout instance for ONE exercise on ONE calendar date.
 | `date` | `Long` | No | Epoch millis (start of day UTC) | Date of session execution. |
 | `tags` | `String` | Yes | Default `null` (Comma-separated) | Session tags (e.g., "fatigued", "gym-A"). |
 | `note` | `String` | Yes | Default `null` | Session-specific execution notes. |
+| `gym` | `String` | Yes | Default `null` | Optional gym/location field (stays `null` until Part 6 builds the UI for it). |
 | `isCompleted` | `Boolean` | No | Default `false` | Completion status. |
 
 ### D. SetEntry Table (`set_entries`)
@@ -106,3 +107,4 @@ Audit and resolution log for exercise merges and set edits.
   *Never sum raw kilograms lifted across distinct exercises.*
 - **Hard Set Definition**: Working set (`NORMAL`, `DROP`, `FAILURE`) executed within target rep range or RIR ≤ 3.
 - **Plateau Condition**: 4 consecutive sessions for an exercise with 0% improvement in load or reps at equivalent load.
+- **Exercise Performance Graphs**: Graphs show top weight and total working reps over time (and best reps per weight), never weight x reps volume.

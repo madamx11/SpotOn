@@ -57,7 +57,7 @@ com.spoton.domain.engine/
 
 ### E. HardSetVolumeEngine
 - **Inputs**: List of `SetEntry` items for a target period (e.g., trailing 7 days).
-- **Rule**: Warm-up sets (`type == WARMUP`) are **STRICTLY EXCLUDED** from all volume and set totals. Hard sets count working sets (`NORMAL`, `DROP`, `FAILURE`) with RIR ≤ 3 or target reps met.
+- **Rule**: Warm-up sets (`type == WARMUP`) are **STRICTLY EXCLUDED** from all volume and set totals. Hard sets count working sets (`NORMAL`, `DROP`, `FAILURE`) with RIR ≤ 3 or target reps met. Exercise performance graphs visualize top weight and total working reps over time (and best reps per weight), never weight x reps volume.
 - **Outputs**: `WorkingVolumeKg`, `HardSetCount`.
 
 ### F. PlateauDiagnosticEngine

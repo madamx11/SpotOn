@@ -39,7 +39,7 @@ SpotOn enforces a flat, modular domain hierarchy:
 MuscleGroup  -->  Exercise  -->  Session  -->  SetEntry
 ```
 
-- **MuscleGroup**: Anatomical target (e.g., Chest, Back, Quads).
+- **MuscleGroup**: Anatomical target (e.g., Chest, Back, Legs).
 - **Exercise**: Specific movement mapped to one MuscleGroup (e.g., Barbell Bench Press).
 - **Session**: Bound to one Exercise on one calendar date (`Session = Exercise + Date`). There are NO workout splits, NO workout days, and NO workout templates.
 - **SetEntry**: Individual performance unit (weight, reps, set type, RIR, timestamp) linked to a Session.
@@ -66,7 +66,7 @@ The following features are strictly out of scope for initial development:
 - **Workout Templates / Splits / Days**: Sessions are strictly per-exercise per-date.
 - **Rest Timers**: No countdown timers or audio alerts.
 - **Social Features**: No feeds, sharing, friends, or leaderboards.
-- **Gamification**: No streaks, badges, points, or virtual rewards.
+- **Gamification**: No streaks, points, levels, achievements, leaderboards, or reward systems. A PR indicator shown on a set is an informational data label, not a gamified badge, and is allowed.
 - **AI Workout Generation**: No automated routine creation.
 - **Nutrition / Calorie Tracking**: Focus is exclusively on strength resistance logging.
 - **User Accounts / Auth**: No sign-in, login screens, or cloud profiles.
